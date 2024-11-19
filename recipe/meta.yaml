@@ -1,5 +1,5 @@
 {% set name = "medchem" %}
-{% set version = "2.0.3" %}
+{% set version = "2.0.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/medchem-{{ version }}.tar.gz
-  sha256: 768ba5d83d146f71fc5696531cd2755f8c289b637115f98002d018fcaef38afa
+  sha256: 2d9c7547a492ced5e2651fccc0cd206049a60acca70f2ffe1d54b2aa10cd024b
 
 build:
   entry_points:
