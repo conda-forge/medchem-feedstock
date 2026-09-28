@@ -1,6 +1,6 @@
 context:
   name: medchem
-  version: 2.0.5
+  version: "2.1.1"
 
 package:
   name: ${{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/medchem-${{ version }}.tar.gz
-  sha256: 2d9c7547a492ced5e2651fccc0cd206049a60acca70f2ffe1d54b2aa10cd024b
+  sha256: 6634e144e2a7f7baed34ac268bda06184e069b35ce8a5af8ce17ecdfa4a50bab
 
 build:
   number: 0
