@@ -1,6 +1,6 @@
 context:
   name: medchem
-  version: 2.0.5
+  version: "2.1.1"
 
 package:
   name: ${{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/medchem-${{ version }}.tar.gz
-  sha256: 2d9c7547a492ced5e2651fccc0cd206049a60acca70f2ffe1d54b2aa10cd024b
+  sha256: 6634e144e2a7f7baed34ac268bda06184e069b35ce8a5af8ce17ecdfa4a50bab
 
 build:
   number: 0
@@ -18,19 +18,20 @@ build:
 requirements:
   host:
     - python ${{ python_min }}.*
-    - setuptools
-    - setuptools-scm
+    - setuptools >=77
+    - setuptools-scm >=8
     - pip
   run:
     - python >=${{ python_min }}
-    - typer
-    - loguru
-    - tqdm
-    - numpy
-    - lark
-    - pandas
-    - networkx
-    - datamol >=0.10
+    - datamol >=0.13.0
+    - fsspec >=2023.9.2
+    - lark >=1.2
+    - loguru >=0.7
+    - networkx >=3.2
+    - numpy >=1.26
+    - pandas >=2.2
+    - rdkit >=2024.9.1
+    - typer >=0.16
 
 tests:
   - python:
@@ -42,6 +43,7 @@ tests:
         - python ${{ python_min }}.*
     script:
       - medchem --help
+      - python -c "from medchem.utils.graph import score_symmetry; assert score_symmetry('CC(C)(C)') == 1"
 
 about:
   summary: 'Medchem: Molecular filtering for drug discovery.'
