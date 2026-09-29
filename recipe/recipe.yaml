@@ -43,7 +43,7 @@ tests:
   - requirements:
       run:
         - python ${{ python_min }}.*
-        - datamol 0.12.5
+        - datamol ==0.12.5
     script:
       - medchem --help
       - python -c "from medchem.utils.graph import score_symmetry; assert score_symmetry('CC(C)(C)') == 1"
