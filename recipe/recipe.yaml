@@ -11,7 +11,7 @@ source:
   sha256: 6634e144e2a7f7baed34ac268bda06184e069b35ce8a5af8ce17ecdfa4a50bab
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
@@ -23,7 +23,7 @@ requirements:
     - pip
   run:
     - python >=${{ python_min }}
-    - datamol >=0.13.0
+    - datamol >=0.12.5
     - fsspec >=2023.9.2
     - lark >=1.2
     - loguru >=0.7
@@ -37,10 +37,13 @@ tests:
   - python:
       imports:
         - medchem
-      python_version: ${{ python_min }}.*
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
   - requirements:
       run:
         - python ${{ python_min }}.*
+        - datamol 0.12.5
     script:
       - medchem --help
       - python -c "from medchem.utils.graph import score_symmetry; assert score_symmetry('CC(C)(C)') == 1"
